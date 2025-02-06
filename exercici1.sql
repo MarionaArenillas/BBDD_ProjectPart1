@@ -23,5 +23,11 @@ CREATE TABLE IF NOT EXISTS Persona (
 CREATE TABLE IF NOT EXISTS Equip_Nacional (
     Any INT(4), 
     Pais VARCHAR(30),
-    PRIMARY KEY (Any, Pais)
-);    
+    PRIMARY KEY(Any, Pais)
+); 
+
+-- Creació de la taula Draft
+CREATE TABLE IF NOT EXISTS Draft (
+    Any_draft INT(4),
+    PRIMARY KEY(Any_draft)
+);
