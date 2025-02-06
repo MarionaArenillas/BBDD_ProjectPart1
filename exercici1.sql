@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS Draft (
     PRIMARY KEY(Any_draft)
 );
 
--- Creació de la taula Conferència
-CREATE TABLE IF NOT EXISTS Conferència (
+-- Creació de la taula Conferencia
+CREATE TABLE IF NOT EXISTS Conferencia (
     Nom_Conferencia VARCHAR(30),
     ZonaGeografica VARCHAR(30) UNIQUE, 
     PRIMARY KEY(Nom_Conferencia)
@@ -43,14 +43,28 @@ CREATE TABLE IF NOT EXISTS Conferència (
 
 -- Creació de la taula franquicia
 CREATE TABLE IF NOT EXISTS Franquicia (
-    Nom_franquicia VARCHAR(30), 
+    Nom_Franquicia VARCHAR(30), 
     Ciutat_franquicia VARCHAR(30),
     Pressupost_franquicia DECIMAL(15,2)
-    AnellsNBA INT(4),
+    AnellsNBA INT,
     DNI_Entrenador_Principal VARCHAR(9), 
     Nom_Pavello VARCHAR(30), 
     DNI_Propietari VARCHAR(9),
     Nom_Conferencia VARCHAR(30),
-    PRIMARY KEY(Nom_franquicia),
+    PRIMARY KEY(Nom_Franquicia),
+    FOREIGN KEY (Nom_Conferencia) REFERENCES Conferencia(Nom_Conferencia) ON DELETE RESTRICT ON UPDATE RESTRICT
 
+);
+
+-- Creació de la taula Jugador
+CREATE TABLE IF NOT EXISTS Jugador (
+    DNI_Jugador VARCHAR(9),
+    AnysPRO INT(4),
+    UniversitatOrigen VARCHAR(30),
+    NombreAnellsNBA INT,
+    Dorsal
+    Nom_Franquicia VARCHAR(30),
+    PRIMARY KEY(DNI_Jugador),
+    FOREIGN KEY (DNI_Jugador) REFERENCES Persona(DNI) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (Nom_Franquicia) REFERENCES Franquicia(Nom_Franquicia) ON DELETE SET NULL ON UPDATE CASCADE
 );
